@@ -8,7 +8,7 @@ function About() {
       <h3>About</h3>
       <p>
         The idea is a simple turn based grid game where all state lives in
-        search params of the browser.
+        search params of the url.
       </p>
       <p>Benefits of this approach</p>
       <ul>
