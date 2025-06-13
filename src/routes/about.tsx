@@ -3,5 +3,5 @@ export const Route = createFileRoute({
 })
 
 function About() {
-  return <div>Hello from About!</div>
+  return <pre>Hello from About!</pre>
 }

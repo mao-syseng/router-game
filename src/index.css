@@ -1,35 +1,51 @@
+@font-face {
+  font-family: "Pixua";
+  src: url("/Pixua.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  color: #344;
+  background-color: rgb(223, 242, 243);
+}
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+pre {
+  font-family: "Pixua", sans-serif;
+  font-size: 40px;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  font-family: "Pixua", sans-serif;
+  text-align: center;
 }
 
-@media (prefers-color-scheme: light) {
+button:hover {
+  cursor: pointer;
+}
+
+.black {
+  color: #344;
+}
+.teal {
+  color: #1c9;
+}
+.yellow {
+  color: #f0c36f;
+}
+
+@media (prefers-color-scheme: dark) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: #d1daec;
+    background-color: #1d2c3a;
   }
-  a:hover {
-    color: #747bff;
+  .black {
+    color: #d1daec;
   }
-  button {
-    background-color: #f9f9f9;
+  .teal {
+    color: #20f9fc;
+  }
+  .yellow {
+    color: #f0c36f;
   }
 }
