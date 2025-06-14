@@ -1,11 +1,20 @@
+type GlyphType =
+  | "Monadic 0-output function"
+  | "Monadic pervasive function"
+  | "Monadic modifier"
+  | "Monadic function"
+  | "Dyadic pervasive function"
+  | "";
+type GlyphColor = "black" | "green" | "yellow" | "teal" | "blue" | "grey";
+
 export interface Glyph {
   ch: string;
   name: string;
-  type: string;
-  color: string;
+  type: GlyphType;
+  color: GlyphColor;
   desc: string;
   url: string;
-};
+}
 
 export const duplicate: Glyph = {
   ch: ".",
@@ -60,5 +69,42 @@ export const gap: Glyph = {
   desc: "Discard the top stack value then call a function",
   url: "https://www.uiua.org/docs/gap",
 };
+
+export const range: Glyph = {
+  ch: "⇡",
+  name: "range",
+  type: "Monadic function",
+  color: "green",
+  desc: "Make an array of all natural numbers less than a number",
+  url: "https://www.uiua.org/docs/range",
+};
+
+export const minimum: Glyph = {
+  ch: "↧",
+  name: "minimum",
+  type: "Dyadic pervasive function",
+  color: "blue",
+  desc: "Take the minimum of two arrays",
+  url: "https://www.uiua.org/docs/minimum",
+};
+
+export const binding: Glyph = {
+    ch: "←",
+    name: "binding",
+    type: "Monadic pervasive function",
+    color: "black",
+    desc: "Bindings are global names that can be given to Uiua values",
+    url: "https://www.uiua.org/docs/binding",
+};
+
+export const by: Glyph = {
+    ch: "⊸",
+    name: "by",
+    type: "Monadic modifier",
+    color: "yellow",
+    desc: "Duplicate a function's last argument before calling it",
+    url: "https://www.uiua.org/docs/by",
+};
+
 
 export const glyph = { dip, duplicate, pop, sine };

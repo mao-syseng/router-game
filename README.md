@@ -1,3 +1,9 @@
+# Necrobold
+necrobold.netlify.app
+
+inspired by Overbold and Crypt of the necrodancer
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
