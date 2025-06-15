@@ -191,3 +191,25 @@ export const floor: Glyph = {
 };
 
 export const glyph = { dip, duplicate, pop, sine };
+
+export const glyphsByName: Record<string, Glyph> = {
+  [transpose.name]: transpose,
+  [deshape.name]: deshape,
+  [floor.name]: floor,
+  [duplicate.name]: duplicate,
+  [pop.name]: pop,
+  [sine.name]: sine,
+  [dip.name]: dip,
+  [character.name]: character,
+  [gap.name]: gap,
+  [range.name]: range,
+  [minimum.name]: minimum,
+  [binding.name]: binding,
+  [by.name]: by,
+  [join.name]: join,
+  [round.name]: round,
+  [power.name]: power,
+  [eta.name]: eta,
+  [under.name]: under,
+  [transpose.name]: transpose,
+};

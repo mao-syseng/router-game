@@ -13,6 +13,7 @@ import type { CreateFileRoute, FileRoutesByPath } from '@tanstack/react-router'
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as GlyphsGlyphNameRouteImport } from './routes/glyphs.$glyphName'
 
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
@@ -24,31 +25,40 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GlyphsGlyphNameRoute = GlyphsGlyphNameRouteImport.update({
+  id: '/glyphs/$glyphName',
+  path: '/glyphs/$glyphName',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/glyphs/$glyphName': typeof GlyphsGlyphNameRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/glyphs/$glyphName': typeof GlyphsGlyphNameRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/glyphs/$glyphName': typeof GlyphsGlyphNameRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about'
+  fullPaths: '/' | '/about' | '/glyphs/$glyphName'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about'
-  id: '__root__' | '/' | '/about'
+  to: '/' | '/about' | '/glyphs/$glyphName'
+  id: '__root__' | '/' | '/about' | '/glyphs/$glyphName'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  GlyphsGlyphNameRoute: typeof GlyphsGlyphNameRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,6 +75,13 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/glyphs/$glyphName': {
+      id: '/glyphs/$glyphName'
+      path: '/glyphs/$glyphName'
+      fullPath: '/glyphs/$glyphName'
+      preLoaderRoute: typeof GlyphsGlyphNameRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -88,10 +105,20 @@ declare module './routes/about' {
     FileRoutesByPath['/about']['fullPath']
   >
 }
+declare module './routes/glyphs.$glyphName' {
+  const createFileRoute: CreateFileRoute<
+    '/glyphs/$glyphName',
+    FileRoutesByPath['/glyphs/$glyphName']['parentRoute'],
+    FileRoutesByPath['/glyphs/$glyphName']['id'],
+    FileRoutesByPath['/glyphs/$glyphName']['path'],
+    FileRoutesByPath['/glyphs/$glyphName']['fullPath']
+  >
+}
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  GlyphsGlyphNameRoute: GlyphsGlyphNameRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

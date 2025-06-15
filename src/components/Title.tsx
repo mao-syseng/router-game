@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import {
   deshape,
   eta,
@@ -28,5 +29,13 @@ interface Props {
   glyph: Glyph;
 }
 function GlyphChar({ glyph }: Props) {
-  return <span className={glyph.color}>{glyph.ch}</span>;
+  return (
+    <Link
+      to={`/glyphs/$glyphName`}
+      params={{ glyphName: glyph.name }}
+      className={glyph.color}
+    >
+      {glyph.ch}
+    </Link>
+  );
 }

@@ -21,6 +21,10 @@ a {
   text-decoration: none;
 }
 
+.link {
+  text-decoration: underline;
+}
+
 body {
   font-family: "Pixua", sans-serif;
   margin: 0;
