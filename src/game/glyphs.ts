@@ -190,6 +190,24 @@ export const floor: Glyph = {
   url: "https://www.uiua.org/docs/floor",
 };
 
+export const take: Glyph = {
+  ch: "↙",
+  name: "take",
+  type: "Dyadic function",
+  color: "blue",
+  desc: "Take the first n rows of an array",
+  url: "https://www.uiua.org/docs/take",
+};
+
+export const drop: Glyph = {
+  ch: "↘",
+  name: "drop",
+  type: "Dyadic function",
+  color: "blue",
+  desc: "Drop the first n rows of an array",
+  url: "https://www.uiua.org/docs/drop",
+};
+
 export const glyph = { dip, duplicate, pop, sine };
 
 export const glyphsByName: Record<string, Glyph> = {
@@ -212,4 +230,6 @@ export const glyphsByName: Record<string, Glyph> = {
   [eta.name]: eta,
   [under.name]: under,
   [transpose.name]: transpose,
+  [take.name]: take,
+  [drop.name]: drop,
 };

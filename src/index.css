@@ -1,5 +1,5 @@
 @font-face {
-  font-family: "Pixua";
+  font-family: "Uiua386";
   src: url("/Uiua386.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
@@ -11,7 +11,7 @@
 }
 
 pre {
-  font-family: "Pixua", sans-serif;
+  font-family: "Uiua386", sans-serif;
   font-size: 56px;
   line-height: 56px;
   margin: 0;
@@ -26,12 +26,12 @@ a {
 }
 
 body {
-  font-family: "Pixua", sans-serif;
+  font-family: "Uiua386", sans-serif;
   margin: 0;
 }
 
 li {
-  margin-bottom: 4px;
+  text-align: left;
 }
 
 main {
@@ -53,7 +53,7 @@ main {
 
 .controls a {
   font-size: 56px;
-  padding: 12px;
+  padding: 8px 24px;
 }
 
 .black {

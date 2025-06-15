@@ -11,7 +11,11 @@ interface Props {
 export default function Cell({ x, y, state }: Props) {
   const glyph = getGlyph(x, y, state);
   return (
-    <Link to="/" search={{ ...state, px: x, py: y }} className={`cell ${glyph.color}`}>
+    <Link
+      to="/glyphs/$glyphName"
+      params={{ glyphName: glyph.name }}
+      className={`cell ${glyph.color}`}
+    >
       {glyph.ch}
     </Link>
   );
