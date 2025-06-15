@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Pixua";
-  src: url("/Pixua.ttf") format("truetype");
+  src: url("/Uiua386.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -13,6 +13,7 @@
 pre {
   font-family: "Pixua", sans-serif;
   font-size: 56px;
+  line-height: 56px;
   margin: 0;
 }
 
@@ -23,6 +24,10 @@ a {
 body {
   font-family: "Pixua", sans-serif;
   margin: 0;
+}
+
+li {
+  margin-bottom: 4px;
 }
 
 main {
@@ -44,7 +49,7 @@ main {
 
 .controls a {
   font-size: 56px;
-  padding: 12px
+  padding: 12px;
 }
 
 .black {
@@ -61,6 +66,12 @@ main {
 }
 .blue {
   color: #54b0fc;
+}
+.orange {
+  color: #f08050;
+}
+.purple {
+  color: #cc6be9;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -82,5 +93,30 @@ main {
   }
   .blue {
     color: #54b0fc;
+  }
+  .orange {
+    color: #f08050;
+  }
+  .purple {
+    color: #cc6be9;
+  }
+  .trans {
+    background-image: linear-gradient(
+      180deg,
+      #5bcefa 34%,
+      #f5a9b8 34%,
+      #f5a9b8 45%,
+      #ffffff 45%,
+      #ffffff 56%,
+      #f5a9b8 56%,
+      #f5a9b8 67%,
+      #5bcefa 67%
+    );
+    background-size: 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
   }
 }

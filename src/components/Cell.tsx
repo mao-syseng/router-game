@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import type { GameState } from "./routes";
-import { getGlyph } from "./randomShit";
+import type { GameState } from "../routes";
+import { getGlyph } from "../game/randomShit";
 
 interface Props {
   state: GameState;

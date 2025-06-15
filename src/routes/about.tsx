@@ -20,6 +20,14 @@ function About() {
         <li>Undo functionality would be free, just go back in browser</li>
         <li>Easy to debug the game state</li>
       </ul>
+      <p>
+        Recipe
+      </p>
+      <ul>
+        <li>Combat from Crypt of the Necrodancer</li>
+        <li>Game loop from Overbold</li>
+        <li>Graphics from Uiua</li>
+      </ul>
     </div>
   );
 }
