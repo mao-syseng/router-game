@@ -6,8 +6,9 @@ import Grid from "../components/Grid";
 import Title from "../components/Title";
 
 const gameStateSchema = z.object({
-  px: z.number().catch(1),
-  py: z.number().catch(1),
+  px: z.number().default(5),
+  py: z.number().default(5),
+  turn: z.number().default(0),
 });
 
 export type GameState = z.infer<typeof gameStateSchema>;

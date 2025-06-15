@@ -36,26 +36,24 @@ export function generateGrid(state: GameState): GCell[][] {
 
 type Direction = "up" | "down" | "left" | "right";
 
-export const calculateNextTurn = (
+export const getNextTurn = (
   direction: Direction,
   currentState: GameState
 ): GameState =>
   produce(currentState, (draft) => {
-    switch (direction) {
-      case "up":
-        if (draft.py > 0) draft.py -= 1;
-        break;
-      case "down":
-        if (draft.py < gridHeight - 1) draft.py += 1;
-        break;
-      case "left":
-        if (draft.px > 0) draft.px -= 1;
-        break;
-      case "right":
-        if (draft.px < gridWidth - 1) draft.px += 1;
-        break;
-    }
+    const { px, py } = getNextPosition(direction, currentState);
+    draft.px = px;
+    draft.py = py;
+    draft.turn++;
   });
+
+export const getNextPosition = (d: Direction, { px, py }: GameState) => {
+  if (d === "up" && py > 0) return { px, py: py - 1 };
+  if (d === "down" && py < gridHeight - 1) return { px, py: py + 1 };
+  if (d === "left" && px > 0) return { px: px - 1, py };
+  if (d === "right" && px < gridWidth - 1) return { px: px + 1, py };
+  return { px, py };
+};
 
 export const getDirectionFromKey = (key: string): Direction | null => {
   if (key === "h" || key === "ArrowLeft") return "left";

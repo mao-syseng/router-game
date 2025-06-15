@@ -208,6 +208,15 @@ export const drop: Glyph = {
   url: "https://www.uiua.org/docs/drop",
 };
 
+export const doo: Glyph = {
+  ch: "⍢",
+  name: "do",
+  type: "Dyadic modifier",
+  color: "purple",
+  desc: "Repeat a function while a condition holds",
+  url: "https://www.uiua.org/docs/do",
+};
+
 export const glyph = { dip, duplicate, pop, sine };
 
 export const glyphsByName: Record<string, Glyph> = {
@@ -232,4 +241,5 @@ export const glyphsByName: Record<string, Glyph> = {
   [transpose.name]: transpose,
   [take.name]: take,
   [drop.name]: drop,
+  [doo.name]: doo,
 };

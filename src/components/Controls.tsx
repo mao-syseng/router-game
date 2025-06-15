@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "@tanstack/react-router";
 import { binding, range, by, minimum } from "../game/glyphs";
 import type { GameState } from "../routes";
-import { calculateNextTurn, getDirectionFromKey } from "../game/randomShit";
+import { getNextTurn, getDirectionFromKey } from "../game/randomShit";
 import { useEffect } from "react";
 
 const usePlayerControls = (currentState: GameState) => {
@@ -10,7 +10,7 @@ const usePlayerControls = (currentState: GameState) => {
   useEffect(() => {
     const handleKeyboardControls = (event: KeyboardEvent) => {
       const d = getDirectionFromKey(event.key);
-      if (d) navigate({ search: (p) => calculateNextTurn(d, p) });
+      if (d) navigate({ search: (p) => getNextTurn(d, p) });
     };
 
     window.addEventListener("keydown", handleKeyboardControls);
@@ -24,34 +24,27 @@ interface Props {
 
 export default function Controls({ state }: Props) {
   usePlayerControls(state);
+
   return (
     <div className="controls">
       <Link
         to="/"
         className={binding.color}
-        search={calculateNextTurn("left", state)}
+        search={getNextTurn("left", state)}
       >
         {binding.ch}
       </Link>
-      <Link
-        to="/"
-        className={range.color}
-        search={calculateNextTurn("up", state)}
-      >
+      <Link to="/" className={range.color} search={getNextTurn("up", state)}>
         {range.ch}
       </Link>
       <Link
         to="/"
         className={minimum.color}
-        search={calculateNextTurn("down", state)}
+        search={getNextTurn("down", state)}
       >
         {minimum.ch}
       </Link>
-      <Link
-        to="/"
-        className={by.color}
-        search={calculateNextTurn("right", state)}
-      >
+      <Link to="/" className={by.color} search={getNextTurn("right", state)}>
         {by.ch}
       </Link>
     </div>
