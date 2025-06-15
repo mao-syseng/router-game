@@ -1,20 +1,19 @@
 import { Fragment } from "react";
-import type { GCell } from "../game/randomShit";
+import { gridHeight, gridWidth } from "../game/randomShit";
 import Cell from "./Cell";
 import type { GameState } from "../routes";
 
 interface Props {
-  grid: GCell[][];
   state: GameState;
 }
 
-export default function Grid({ grid, state }: Props) {
+export default function Grid({ state }: Props) {
   return (
     <pre className="grid">
-      {grid.map((row, y) => (
+      {Array.from({ length: gridHeight }, (_, y) => (
         <Fragment key={`row-${y}`}>
-          {row.map((cell) => (
-            <Cell key={cell.id} x={cell.x} y={cell.y} state={state} />
+          {Array.from({ length: gridWidth }, (_, x) => (
+            <Cell key={`cell-${x}-${y}`} x={x} y={y} state={state} />
           ))}
           {"\n"}
         </Fragment>

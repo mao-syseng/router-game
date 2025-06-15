@@ -1,5 +1,5 @@
-import { character, gap, type Glyph } from "./glyphs";
-import type { GameState } from "../routes";
+import { character, gap, glyphsByName, type Glyph } from "./glyphs";
+import type { Foe, GameState } from "../routes";
 import { produce } from "immer";
 
 export const gridWidth = 10;
@@ -9,41 +9,34 @@ export interface GCell {
   id: string;
   x: number;
   y: number;
-  glyph: Glyph;
 }
 
-export function getGlyph(x: number, y: number, state: GameState): Glyph {
-  if (x === state.px && y === state.py) return character;
+export function getGlyph(
+  x: number,
+  y: number,
+  { px, py, foes }: GameState
+): Glyph {
+  if (x === px && y === py) return character;
+  const foe = findFoe(x, y, foes);
+  if (foe) return glyphsByName[foe.id];
+
   return gap;
 }
 
-function getKey(x: number, y: number): string {
-  return `${x}-${y}`;
-}
-
-export function generateGrid(state: GameState): GCell[][] {
-  return Array.from({ length: gridHeight }, (_, y) =>
-    Array.from({ length: gridWidth }, (_, x) => {
-      return {
-        id: getKey(x, y),
-        x,
-        y,
-        glyph: getGlyph(x, y, state),
-      };
-    })
-  );
-}
+const findFoe = (x: number, y: number, foes: Foe[]): Foe | undefined =>
+  foes.find((f) => f.x === x && f.y === y);
 
 type Direction = "up" | "down" | "left" | "right";
 
 export const getNextTurn = (
   direction: Direction,
-  currentState: GameState
+  state: GameState
 ): GameState =>
-  produce(currentState, (draft) => {
-    const { px, py } = getNextPosition(direction, currentState);
+  produce(state, (draft) => {
+    const { px, py } = getNextPosition(direction, state);
     draft.px = px;
     draft.py = py;
+    draft.foes = moveFoesTowardPlayer(state.foes, state.px, state.py);
     draft.turn++;
   });
 
@@ -61,4 +54,41 @@ export const getDirectionFromKey = (key: string): Direction | null => {
   if (key === "k" || key === "ArrowUp") return "up";
   if (key === "l" || key === "ArrowRight") return "right";
   return null;
+};
+
+export const getNextPositionFoe = (
+  fx: number,
+  fy: number,
+  px: number,
+  py: number
+): { x: number; y: number } => {
+  const dx = px - fx;
+  const dy = py - fy;
+
+  if (Math.abs(dx) > Math.abs(dy)) {
+    return { x: fx + Math.sign(dx), y: fy };
+  } else if (dy !== 0) {
+    return { x: fx, y: fy + Math.sign(dy) };
+  }
+
+  return { x: fx, y: fy };
+};
+
+export const moveFoesTowardPlayer = (
+  foes: Foe[],
+  px: number,
+  py: number
+): { id: string; x: number; y: number }[] => {
+  return foes.map((foe) => {
+    const dx = px - foe.x;
+    const dy = py - foe.y;
+
+    if (Math.abs(dx) > Math.abs(dy)) {
+      return { ...foe, x: foe.x + Math.sign(dx) };
+    } else if (dy !== 0) {
+      return { ...foe, y: foe.y + Math.sign(dy) };
+    }
+
+    return foe;
+  });
 };
