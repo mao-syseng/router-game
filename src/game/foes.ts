@@ -1,5 +1,3 @@
-import { doo, type Glyph } from "./glyphs";
-
 export type FoeTypes =
   | "duplicate"
   | "pop"
