@@ -49,6 +49,13 @@ main {
   font-size: 18px;
   color: #d1daec;
 }
+.turnCounter {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 18px;
+  color: #d1daec;
+}
 
 .controls a {
   font-size: 56px;
