@@ -1,6 +1,7 @@
 import { character, gap, glyphsByName, type Glyph } from "./glyphs";
 import type { Foe, GameState } from "../routes";
 import { produce } from "immer";
+import { getFoe } from "./foes";
 
 export const gridWidth = 10;
 export const gridHeight = 10;
@@ -92,3 +93,10 @@ export const moveFoesTowardPlayer = (
     return foe;
   });
 };
+
+export const getDefaultState = (): GameState => ({
+  px: 5,
+  py: 5,
+  turn: 0,
+  foes: [getFoe("do")],
+});

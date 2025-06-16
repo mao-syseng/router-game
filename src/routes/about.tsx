@@ -1,3 +1,6 @@
+import { Link } from "@tanstack/react-router";
+import { getDefaultState } from "../game/randomShit";
+
 export const Route = createFileRoute({
   component: About,
 });
@@ -28,6 +31,9 @@ function About() {
           <li>Graphics from Uiua</li>
         </ul>
       </div>
+      <Link to="/" className="purple" search={getDefaultState()}>
+        Reset game
+      </Link>
     </main>
   );
 }

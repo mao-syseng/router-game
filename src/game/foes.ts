@@ -1,13 +1,14 @@
 import { doo, type Glyph } from "./glyphs";
 
-interface Foe {
-  x: number;
-  y: number;
-  g: Glyph;
-}
+export type FoeTypes =
+  | "duplicate"
+  | "pop"
+  | "do"
+  | "sine"
+  | "under"
+  | "eta"
+  | "transpose";
 
-export const fDoo: Foe = {
-  x: 0,
-  y: 0,
-  g: doo,
+export const getFoe = (id: FoeTypes) => {
+  return { id, x: 5, y: 0 };
 };

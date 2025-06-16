@@ -3,6 +3,8 @@ import Controls from "../components/Controls";
 import HelpBtn from "../components/HelpBtn";
 import Grid from "../components/Grid";
 import Title from "../components/Title";
+import TurnCounter from "../components/TurnCounter";
+import { getFoe } from "../game/foes";
 
 const foeSchema = z.object({
   id: z.string(),
@@ -15,7 +17,7 @@ const gameStateSchema = z.object({
   px: z.number().default(5),
   py: z.number().default(5),
   turn: z.number().default(0),
-  foes: z.array(foeSchema).default([{ id: "do", x: 5, y: 0 }]),
+  foes: z.array(foeSchema).default([getFoe("do")]),
 });
 export type GameState = z.infer<typeof gameStateSchema>;
 
@@ -30,6 +32,7 @@ function Index() {
   return (
     <main>
       <HelpBtn />
+      <TurnCounter turn={state.turn} />
       <Title />
       <Grid state={state} />
       <Controls state={state} />
