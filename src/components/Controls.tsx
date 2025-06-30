@@ -34,15 +34,15 @@ export default function Controls({ state }: Props) {
       >
         {binding.ch}
       </Link>
-      <Link to="/" className={range.color} search={getNextTurn("up", state)}>
-        {range.ch}
-      </Link>
       <Link
         to="/"
         className={minimum.color}
         search={getNextTurn("down", state)}
       >
         {minimum.ch}
+      </Link>
+      <Link to="/" className={range.color} search={getNextTurn("up", state)}>
+        {range.ch}
       </Link>
       <Link to="/" className={by.color} search={getNextTurn("right", state)}>
         {by.ch}
