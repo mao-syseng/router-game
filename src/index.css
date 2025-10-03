@@ -1,132 +1,38 @@
 @font-face {
-  font-family: "Uiua386";
-  src: url("/Uiua386.ttf") format("truetype");
+  font-family: "Pixua";
+  src: url("/Pixua.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 :root {
-  color: #344;
-  background-color: rgb(223, 242, 243);
+  --c1: #302387;
+  --c2: #fffdaf;
+  --c3: #00faac;
+  --c4: #ff3796;
+  --cellSize: 24px;
+
+  font-family: "Pixua", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: var(--cellSize);
+
+  color-scheme: light dark;
+  color: var(--c2);
+  background-color: var(--c1);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-pre {
-  font-family: "Uiua386", sans-serif;
-  font-size: 56px;
-  line-height: 56px;
-  margin: 0;
+.cell {
+  width: var(--cellSize);
+  height: var(--cellSize);
+  overflow: hidden;
 }
 
-a {
-  text-decoration: none;
-}
-
-.link {
-  text-decoration: underline;
-}
-
-body {
-  font-family: "Uiua386", sans-serif;
-  margin: 0;
-}
-
-li {
-  text-align: left;
-}
-
-main {
-  text-align: center;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
-.helpbtn {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  font-size: 18px;
-  color: #d1daec;
-}
-.turnCounter {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  font-size: 18px;
-  color: #d1daec;
-}
-
-.controls a {
-  font-size: 56px;
-  padding: 8px 24px;
-}
-
-.black {
-  color: #344;
-}
-.teal {
-  color: #1c9;
-}
-.yellow {
-  color: #f0c36f;
-}
-.green {
-  color: #95d16a;
-}
-.blue {
-  color: #54b0fc;
-}
-.orange {
-  color: #f08050;
-}
-.purple {
-  color: #cc6be9;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    color: #d1daec;
-    background-color: #1d2c3a;
-  }
-  .black {
-    color: #d1daec;
-  }
-  .teal {
-    color: #20f9fc;
-  }
-  .yellow {
-    color: #f0c36f;
-  }
-  .green {
-    color: #95d16a;
-  }
-  .blue {
-    color: #54b0fc;
-  }
-  .orange {
-    color: #f08050;
-  }
-  .purple {
-    color: #cc6be9;
-  }
-  .trans {
-    background-image: linear-gradient(
-      180deg,
-      #5bcefa 34%,
-      #f5a9b8 34%,
-      #f5a9b8 45%,
-      #ffffff 45%,
-      #ffffff 56%,
-      #f5a9b8 56%,
-      #f5a9b8 67%,
-      #5bcefa 67%
-    );
-    background-size: 100%;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -moz-text-fill-color: transparent;
-  }
+.cell img {
+  height: inherit;
 }
