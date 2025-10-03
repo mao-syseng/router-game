@@ -1,8 +1,6 @@
-import { useQueryState } from "nuqs";
 import glitchSamuraiIdle from "./assets/glitchSamuraiIdlei.gif";
 
 function App() {
-  const [map, setMap] = useQueryState("m", { defaultValue: "ec" });
   return (
     <>
       <div className="grid">
