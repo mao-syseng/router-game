@@ -10,7 +10,8 @@
   --c2: #fffdaf;
   --c3: #00faac;
   --c4: #ff3796;
-  --cellSize: 24px;
+  --cellSize: 64px;
+  --gridSize: 10;
 
   font-family: "Pixua", sans-serif;
   font-weight: 400;
@@ -27,12 +28,34 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  margin: 0;
+}
+
+main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--gridSize), var(--cellSize));
+  grid-template-rows: repeat(var(--gridSize), var(--cellSize));
+  outline: none;
+}
+
 .cell {
   width: var(--cellSize);
   height: var(--cellSize);
   overflow: hidden;
 }
-
 .cell img {
   height: inherit;
+}
+
+.flip {
+  transform: scaleX(-1);
 }

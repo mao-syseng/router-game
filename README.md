@@ -1,3 +1,9 @@
+Pallette: https://lospec.com/palette-list/fuzzyfour
+-  #302387
+-  #ff3796 
+-  #00faac 
+-  #fffdaf 
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
